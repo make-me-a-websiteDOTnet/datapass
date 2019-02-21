@@ -36,11 +36,28 @@
     dest: "/etc/systemd/system/{{app_service_name}}.service"
   notify: "restart service {{app_service_name}}"
 
+- name: copy systemd unit1 file
+  template:
+    src: app-unit1.service.j2
+    dest: "/etc/systemd/system/{{app_service_name}}-unit1.service"
+  notify: "restart service {{app_service_name}}"
+
+- name: copy systemd unit2 file
+  template:
+    src: app-unit2.service.j2
+    dest: "/etc/systemd/system/{{app_service_name}}-unit2.service"
+  notify: "restart service {{app_service_name}}"
+
 - name: enable services
   systemd:
-    name: "{{app_service_name}}"
+    name: "{{ item }}"
     daemon_reload: yes
     enabled: true
+  with_items:
+    - "{{app_service_name}}"
+    - "{{app_service_name}}-unit1"
+    - "{{app_service_name}}-unit2"
+  notify: "restart service {{app_service_name}}"
 
 - lineinfile:
     path: /etc/sudoers

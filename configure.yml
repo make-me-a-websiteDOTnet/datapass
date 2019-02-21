@@ -84,10 +84,10 @@
       server_name: "{{ api_scopes_domain_name }}"
     - role: mongodb
       tags: mongodb
-    - role: node-app
+    - role: multithreaded-node-app
       app_service_name: api-scopes
       server_name: "{{ api_scopes_domain_name }}"
-      app_port: 3000
+      app_port_decade: 300
       env_var:
         API_SCOPES_DOMAIN_NAME: "{{ api_scopes_domain_name }}"
         API_SCOPES_DATABASE_NAME: "{{ api_scopes_database_name }}"

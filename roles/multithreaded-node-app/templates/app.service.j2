@@ -1,19 +1,20 @@
+# Master service to manage multithreaded node service
+# inspired from http://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd/
 [Unit]
 Description={{ app_service_name }}
 After=network-online.target
 
 [Service]
-Type=simple
+# The dummy program will exit
+Type=oneshot
 
 User={{ app_user }}
 Group={{ app_user }}
 
-WorkingDirectory=/opt/apps/{{ app_service_name }}/current
-EnvironmentFile=/etc/{{ app_service_name }}.conf
-ExecStart=/usr/bin/npm run start
-
-Restart=on-failure
-TimeoutStopSec=30
+# Execute a dummy program
+ExecStart=/bin/true
+# This service shall be considered active after start
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

@@ -103,7 +103,7 @@ exit
 Deploy API Scopes:
 ```bash
 vagrant ssh api-scopes
-sudo su - api-scopes
+# sudo su - api-scopes
 cd /opt/apps/api-scopes/current
 export $(cat /etc/api-scopes.conf | xargs)
 npm i

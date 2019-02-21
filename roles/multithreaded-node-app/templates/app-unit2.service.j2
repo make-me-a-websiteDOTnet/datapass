@@ -1,0 +1,26 @@
+[Unit]
+Description={{ app_service_name }}-unit2
+# When systemd stops or restarts the app.service, the action is propagated to this unit
+PartOf={{ app_service_name }}.service
+# Start this unit after the app.service start
+After={{ app_service_name }}.service
+# This unit should start after the app-component2 started
+After={{ app_service_name }}-unit1.service
+
+[Service]
+Type=notify
+
+User={{ app_user }}
+Group={{ app_user }}
+
+WorkingDirectory=/opt/apps/{{ app_service_name }}/current
+Environment=PORT={{ app_port_decade }}2
+EnvironmentFile=/etc/{{ app_service_name }}.conf
+ExecStart=/usr/bin/node .
+
+Restart=on-failure
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+[Install]
+WantedBy={{ app_service_name }}.service
