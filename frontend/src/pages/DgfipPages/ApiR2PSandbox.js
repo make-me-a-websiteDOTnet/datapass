@@ -5,6 +5,7 @@ import OrganisationSection from '../../components/organisms/form-sections/Organi
 import DonneesSection from '../../components/organisms/form-sections/DonneesSection';
 import CguSection from '../../components/organisms/form-sections/CguSection';
 import DemarcheSection from '../../components/organisms/form-sections/DemarcheSection';
+import { editorList } from '../ApiParticulier';
 import { additionalTermsOfUse, DonneesDescription } from './common';
 import CadreJuridiqueSection from '../../components/organisms/form-sections/CadreJuridiqueSection';
 import ÉquipeSection from '../../components/organisms/form-sections/ÉquipeSection';
@@ -93,7 +94,7 @@ const ApiR2PSandbox = () => (
     documentationUrl="https://api.gouv.fr/les-api/api_r2p"
   >
     <PreviousEnrollmentSection steps={steps} />
-    <OrganisationSection />
+    <OrganisationSection editorList={editorList} />
     <DemarcheSection />
     <DescriptionSection />
     <DonneesSection

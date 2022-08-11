@@ -205,7 +205,7 @@ const availableScopes = [
   },
 ];
 
-const editorList = [
+export const editorList = [
   { name: 'Arpège', siret: '35142130000036' },
   { name: 'Abelium Collectivités', siret: '42172024400050' },
   { name: 'Agora Plus', siret: '48017088500010' },
