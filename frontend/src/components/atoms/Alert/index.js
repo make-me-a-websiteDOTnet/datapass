@@ -11,7 +11,7 @@ export const Alert = ({
     {title && <p className="fr-alert__title">{title}</p>}
     {children}
     {onAlertClose && (
-      <button class="fr-link--close fr-link" onClick={onAlertClose}>
+      <button className="fr-link--close fr-link" onClick={onAlertClose}>
         Masquer le message
       </button>
     )}
